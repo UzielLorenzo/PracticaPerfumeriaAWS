@@ -1,7 +1,3 @@
-<?php
-// index.php
-// Formulario HTML para capturar los datos
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,49 +7,45 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #c3fae8;
-            margin: 0;
-            padding: 0;
+            background-color: #f4f4f9;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
         }
         .form-container {
-            background-color: #ffffff;
+            background-color: #fff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
         }
-        h1 {
+        .form-container h1 {
             text-align: center;
-            color: #333;
+            margin-bottom: 20px;
         }
-        label {
+        .form-container label {
+            font-weight: bold;
             display: block;
-            margin-top: 10px;
+            margin-bottom: 5px;
         }
-        input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        input[type="submit"] {
+        .form-container input {
             width: 100%;
             padding: 10px;
-            margin-top: 20px;
-            background-color: #5cb8b0;
-            color: white;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
             border: none;
-            border-radius: 4px;
             cursor: pointer;
         }
-        input[type="submit"]:hover {
-            background-color: #4cae4c;
+        .form-container input[type="submit"]:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
