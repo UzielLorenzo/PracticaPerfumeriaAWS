@@ -1,7 +1,3 @@
-<?php
-// index.php
-// Formulario HTML para capturar los datos
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
