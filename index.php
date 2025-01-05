@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,43 +15,24 @@
             margin: 0;
         }
         .form-container {
-            background-color: #fff;
+            background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input[type="text"], input[type="number"], input[type="submit"] {
             width: 100%;
-            max-width: 400px;
-        }
-        .form-container h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .form-container label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-container input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
+            padding: 8px;
+            margin: 10px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .form-container input[type="submit"] {
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        .form-container input[type="submit"]:hover {
-            background-color: #0056b3;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h1>Formulario de Registro</h1>
+        <h2>Formulario de Registro</h2>
         <form action="procesar.php" method="post">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
