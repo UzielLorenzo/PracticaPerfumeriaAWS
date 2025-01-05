@@ -2,7 +2,12 @@
 // procesar.php
 
 // Incluir el archivo de conexión a la base de datos
-include 'db.php';
+require 'db.php';
+
+if (!$conn) {
+    echo "Error: No se pudo conectar a la base de datos.";
+    exit;
+}
 
 try {
     // Preparar la consulta SQL usando PDO
@@ -19,7 +24,7 @@ try {
     
     // Ejecutar la consulta
     $stmt->execute();
-    
+
     echo "Datos guardados correctamente.";
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
