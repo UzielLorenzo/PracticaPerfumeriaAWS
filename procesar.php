@@ -1,25 +1,31 @@
 <?php
-// procesar.php
-include 'db.php';
+require_once 'db.php';
 
-try {
-    // Preparar la consulta SQL
-    $stmt = $conn->prepare("INSERT INTO usuarios (nombre, apellidos, edad, nacionalidad, escuela, estado_origen, telefono) VALUES (:nombre, :apellidos, :edad, :nacionalidad, :escuela, :estado_origen, :telefono)");
-    
-    // Vincular los parámetros
-    $stmt->bindParam(':nombre', $_POST['nombre']);
-    $stmt->bindParam(':apellidos', $_POST['apellidos']);
-    $stmt->bindParam(':edad', $_POST['edad']);
-    $stmt->bindParam(':nacionalidad', $_POST['nacionalidad']);
-    $stmt->bindParam(':escuela', $_POST['escuela']);
-    $stmt->bindParam(':estado_origen', $_POST['estado_origen']);
-    $stmt->bindParam(':telefono', $_POST['telefono']);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $_POST['nombre'] ?? null;
+    $apellidos = $_POST['apellidos'] ?? null;
+    $edad = $_POST['edad'] ?? null;
+    $nacionalidad = $_POST['nacionalidad'] ?? null;
+    $escuela = $_POST['escuela'] ?? null;
+    $estado_origen = $_POST['estado_origen'] ?? null;
+    $telefono = $_POST['telefono'] ?? null;
 
-    // Ejecutar la consulta
-    $stmt->execute();
+    if ($conn) {
+        $sql = "INSERT INTO registros (nombre, apellidos, edad, nacionalidad, escuela, estado_origen, telefono) VALUES (:nombre, :apellidos, :edad, :nacionalidad, :escuela, :estado_origen, :telefono)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            ':nombre' => $nombre,
+            ':apellidos' => $apellidos,
+            ':edad' => $edad,
+            ':nacionalidad' => $nacionalidad,
+            ':escuela' => $escuela,
+            ':estado_origen' => $estado_origen,
+            ':telefono' => $telefono,
+        ]);
 
-    echo "Datos guardados correctamente.";
-} catch (PDOException $e) {
-    echo "Error al guardar los datos: " . $e->getMessage();
+        echo "Datos guardados exitosamente.";
+    } else {
+        echo "Error: No se pudo conectar a la base de datos.";
+    }
 }
 ?>
