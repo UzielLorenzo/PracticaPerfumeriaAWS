@@ -1,9 +1,9 @@
 <?php
 // procesar.php
 require_once 'db.php';
+require_once 'fpdf.php'; // Incluir la librería FPDF
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener los datos del formulario
     $nombre = $_POST['nombre'] ?? null;
     $apellidos = $_POST['apellidos'] ?? null;
     $edad = $_POST['edad'] ?? null;
@@ -12,10 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $estado_origen = $_POST['estado_origen'] ?? null;
     $telefono = $_POST['telefono'] ?? null;
 
-    // Verificar la conexión a la base de datos
-    if ($conn) {
-        try {
-            // Insertar los datos en la tabla
+    try {
+        if ($conn) {
+            // Insertar los datos en la base de datos
             $sql = "INSERT INTO formulario (nombre, apellidos, edad, nacionalidad, escuela, estado_origen, numero_telefono) VALUES (:nombre, :apellidos, :edad, :nacionalidad, :escuela, :estado_origen, :telefono)";
             $stmt = $conn->prepare($sql);
             $stmt->execute([
@@ -28,16 +27,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ':telefono' => $telefono,
             ]);
 
-            // Confirmación
-            echo "<h1>Datos guardados exitosamente.</h1>";
-            echo "<a href='index.php'>Volver al formulario</a>";
-        } catch (PDOException $e) {
-            // Mostrar errores si ocurren
-            echo "<h1>Error: " . $e->getMessage() . "</h1>";
+            // Generar el PDF con FPDF
+            $pdf = new FPDF();
+            $pdf->AddPage();
+            $pdf->SetFont('Arial', 'B', 16);
+            $pdf->Cell(0, 10, 'Formulario de Registro', 0, 1, 'C');
+            $pdf->Ln(10);
+
+            $pdf->SetFont('Arial', '', 12);
+            $pdf->Cell(50, 10, 'Nombre:', 1);
+            $pdf->Cell(140, 10, $nombre, 1);
+            $pdf->Ln();
+            $pdf->Cell(50, 10, 'Apellidos:', 1);
+            $pdf->Cell(140, 10, $apellidos, 1);
+            $pdf->Ln();
+            $pdf->Cell(50, 10, 'Edad:', 1);
+            $pdf->Cell(140, 10, $edad, 1);
+            $pdf->Ln();
+            $pdf->Cell(50, 10, 'Nacionalidad:', 1);
+            $pdf->Cell(140, 10, $nacionalidad, 1);
+            $pdf->Ln();
+            $pdf->Cell(50, 10, 'Escuela:', 1);
+            $pdf->Cell(140, 10, $escuela, 1);
+            $pdf->Ln();
+            $pdf->Cell(50, 10, 'Estado de Origen:', 1);
+            $pdf->Cell(140, 10, $estado_origen, 1);
+            $pdf->Ln();
+            $pdf->Cell(50, 10, 'Telefono:', 1);
+            $pdf->Cell(140, 10, $telefono, 1);
+
+            // Descargar el PDF
+            $pdf->Output('D', 'formulario_registro.pdf');
+        } else {
+            echo "Error: No se pudo conectar a la base de datos.";
         }
-    } else {
-        echo "<h1>Error: No se pudo conectar a la base de datos.</h1>";
+    } catch (PDOException $e) {
+        echo "Error en la base de datos: " . $e->getMessage();
+    } catch (Exception $e) {
+        echo "Error general: " . $e->getMessage();
     }
-} else {
-    echo "<h1>Acceso no permitido.</h1>";
 }
+?>
