@@ -1,29 +1,30 @@
 <?php
 // procesar.php
 
-// Incluir la conexión a la base de datos
+// Incluir el archivo de conexión a la base de datos
 include 'db.php';
 
-// Obtener los datos del formulario
-$nombre = $_POST['nombre'];
-$apellidos = $_POST['apellidos'];
-$edad = $_POST['edad'];
-$nacionalidad = $_POST['nacionalidad'];
-$escuela = $_POST['escuela'];
-$estado_origen = $_POST['estado_origen'];
-$telefono = $_POST['telefono'];
-
-// Preparar la consulta SQL
-$query = "INSERT INTO usuarios (nombre, apellidos, edad, nacionalidad, escuela, estado_origen, telefono) 
-          VALUES ('$nombre', '$apellidos', '$edad', '$nacionalidad', '$escuela', '$estado_origen', '$telefono')";
-
-// Ejecutar la consulta
-if (pg_query($conn, $query)) {
-    echo "Registro exitoso.";
-} else {
-    echo "Error: " . pg_last_error($conn);
+try {
+    // Preparar la consulta SQL usando PDO
+    $stmt = $conn->prepare("INSERT INTO usuarios (nombre, apellidos, edad, nacionalidad, escuela, estado_origen, telefono) VALUES (:nombre, :apellidos, :edad, :nacionalidad, :escuela, :estado_origen, :telefono)");
+    
+    // Asociar los valores del formulario a los parámetros de la consulta
+    $stmt->bindParam(':nombre', $_POST['nombre']);
+    $stmt->bindParam(':apellidos', $_POST['apellidos']);
+    $stmt->bindParam(':edad', $_POST['edad']);
+    $stmt->bindParam(':nacionalidad', $_POST['nacionalidad']);
+    $stmt->bindParam(':escuela', $_POST['escuela']);
+    $stmt->bindParam(':estado_origen', $_POST['estado_origen']);
+    $stmt->bindParam(':telefono', $_POST['telefono']);
+    
+    // Ejecutar la consulta
+    $stmt->execute();
+    
+    echo "Datos guardados correctamente.";
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
 }
 
 // Cerrar la conexión
-pg_close($conn);
+$conn = null;
 ?>
