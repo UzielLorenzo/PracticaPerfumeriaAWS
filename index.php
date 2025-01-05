@@ -46,7 +46,7 @@
             width: 100%;
             padding: 10px;
             margin-top: 20px;
-            background-color: #5cb85c;
+            background-color: #5cb8b0;
             color: white;
             border: none;
             border-radius: 4px;
