@@ -2,10 +2,10 @@
 // db.php
 // Archivo para conectar con la base de datos PostgreSQL
 
-$host = 'TU_ENDPOINT_DE_RDS';
+$host = 'perfumeria-db.c9cqgowoy3k1.us-east-2.rds.amazonaws.com';
 $db = 'perfumeria_db';
 $user = 'AdminPerfumeria';
-$pass = 'TU_CONTRASEÑA';
+$pass = 'MiContrasenaSegura2025';
 $port = '5432';
 
 try {
