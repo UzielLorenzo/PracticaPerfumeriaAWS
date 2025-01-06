@@ -14,68 +14,63 @@
             height: 100vh;
             margin: 0;
         }
-        .form-container {
-            background-color: #fff;
+        form {
+            background-color: #ffffff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .form-container h1 {
+        h1 {
             text-align: center;
-            margin-bottom: 20px;
         }
-        .form-container label {
+        label {
             font-weight: bold;
             display: block;
-            margin-bottom: 5px;
+            margin-top: 10px;
         }
-        .form-container input {
+        input {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
+            padding: 8px;
+            margin-top: 5px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 4px;
         }
-        .form-container input[type="submit"] {
-            background-color: #007BFF;
-            color: #fff;
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
             border: none;
             cursor: pointer;
         }
-        .form-container input[type="submit"]:hover {
-            background-color: #0056b3;
+        input[type="submit"]:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
+    <form action="procesar.php" method="post">
         <h1>Formulario de Registro</h1>
-        <form action="procesar.php" method="post">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
 
-            <label for="apellidos">Apellidos:</label>
-            <input type="text" id="apellidos" name="apellidos" required>
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required>
 
-            <label for="edad">Edad:</label>
-            <input type="number" id="edad" name="edad" required>
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" required>
 
-            <label for="nacionalidad">Nacionalidad:</label>
-            <input type="text" id="nacionalidad" name="nacionalidad" required>
+        <label for="nacionalidad">Nacionalidad:</label>
+        <input type="text" id="nacionalidad" name="nacionalidad" required>
 
-            <label for="escuela">Escuela:</label>
-            <input type="text" id="escuela" name="escuela" required>
+        <label for="escuela">Escuela:</label>
+        <input type="text" id="escuela" name="escuela" required>
 
-            <label for="estado_origen">Estado de Origen:</label>
-            <input type="text" id="estado_origen" name="estado_origen" required>
+        <label for="estado_origen">Estado de Origen:</label>
+        <input type="text" id="estado_origen" name="estado_origen" required>
 
-            <label for="telefono">Número de Teléfono:</label>
-            <input type="text" id="telefono" name="telefono" required>
+        <label for="telefono">Número de Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" required>
 
-            <input type="submit" value="Enviar">
-        </form>
-    </div>
+        <input type="submit" value="Enviar">
+    </form>
 </body>
 </html>
