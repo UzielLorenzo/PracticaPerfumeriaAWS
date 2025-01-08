@@ -1,0 +1,85 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #8fd3f4);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+form h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #ff9a9e;
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 154, 158, 0.5);
+}
+
+input[type="submit"] {
+    background-color: #ff9a9e;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #fa7c91;
+}
+
+.input-group input:hover {
+    border-color: #fad0c4;
+}
