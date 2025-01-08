@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdf->Ln();
         $pdf->Cell(40, 10, "Estado de Origen: $estado_origen");
         $pdf->Ln();
-        $pdf->Cell(40, 10, "Teléfono: $telefono");
+        $pdf->Cell(40, 10, "Telefono: $telefono");
         $pdf->Ln();
 
         // Descargar el PDF
